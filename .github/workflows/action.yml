@@ -1,0 +1,11 @@
+name: Build and deploy workflow
+on: [push]
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone code
+        uses: actions/checkout@v2
+      - name: build
+        run: docker build -t dine512/coursework4 ./coursework_5
+
