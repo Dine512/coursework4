@@ -28,6 +28,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "coursework_5/data,deploy/docker-compose-ci.yml"
+          source: "coursework_5/data,deploy/docker-compose.yml"
           target: "flask_game"
           strip_components: 1
