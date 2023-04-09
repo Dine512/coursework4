@@ -26,4 +26,4 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "coursework_5/data,coursework_5/docker-compose-ci.yml"
           target: "flask_game"
-          strip_components: 2
+          strip_components: 1
