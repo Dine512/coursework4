@@ -12,7 +12,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: test
-        run: printenv GITHUB_REF_NAME
+        run: export GITHUB_REF_NAME=$GITHUB_REF_NAME
+      - name: test2
+        run: export GITHUB_RUN_ID=$GITHUB_RUN_ID
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
