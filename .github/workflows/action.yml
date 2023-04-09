@@ -31,3 +31,12 @@ jobs:
           source: "coursework_5/data,deploy/docker-compose.yml"
           target: "flask_game"
           strip_components: 1
+      - name: deploy app
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd flask_game
+            sudo docker-compose up -d
