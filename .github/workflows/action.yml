@@ -16,7 +16,7 @@ jobs:
         with:
           context: ./coursework_5
           push: true
-          tags: dine512/coursework4:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+          tags: dine512/coursework4:test
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push
