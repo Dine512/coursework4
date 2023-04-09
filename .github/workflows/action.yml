@@ -16,5 +16,19 @@ jobs:
         with:
           context: ./coursework_5
           push: true
-          tags: dine512/coursework4
-
+          tags: dine512/coursework4:$GITHUB_REF_NAME-$GITHUB_RUN_ID
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_and_push
+    steps:
+      - name: clone code
+        uses: actions/checkout@v2
+      - name: copy files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "coursework_5/data,coursework_5/docker-compose-ci.yml"
+          target: "flask_game"
+          strip_components: 2
