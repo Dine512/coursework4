@@ -18,12 +18,16 @@ jobs:
     steps:
       - name: clone code
         uses: actions/checkout@v2
+      - name: render configs
+        run: |
+          mkdir deploy
+          cat ./coursework_5/docker-compose-ci.yml | envsubst > deploy/docker-compose.yml
       - name: copy files to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "coursework_5/data,coursework_5/docker-compose-ci.yml"
+          source: "coursework_5/data,deploy/docker-compose-ci.yml"
           target: "flask_game"
           strip_components: 1
