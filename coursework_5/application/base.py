@@ -1,16 +1,16 @@
 from unit import BaseUnit
 
-class BaseSingleton(type):
-    _instances = {}
+# class BaseSingleton(type):
+#     _instances = {}
+#
+#     def __call__(cls, *args, **kwargs):
+#         if cls not in cls._instances:
+#             instance = super().__call__(*args, **kwargs)
+#             cls._instances[cls] = instance
+#         return cls._instances[cls]
 
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            instance = super().__call__(*args, **kwargs)
-            cls._instances[cls] = instance
-        return cls._instances[cls]
 
-
-class Arena(metaclass=BaseSingleton):
+class Arena:
     STAMINA_PER_ROUND = 1
     player = None
     enemy = None
